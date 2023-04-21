@@ -31,7 +31,7 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 - **확장성**: TFT는 병렬 컴퓨팅 리소스를 사용하여 대규모 데이터셋에서 효율적으로 학습할 수 있어 실제 애플리케이션에 적합합니다.
 
 ## Dataset
-  
+
 | Feature | Description | Unit | Frequency |
 | ------- | ----------- | ---- | --------- |
 | BDI | Baltic Dry Index | Points | Daily |
