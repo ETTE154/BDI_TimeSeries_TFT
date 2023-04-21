@@ -134,6 +134,63 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
     - **Returns:** 
        TemporalFusionTransformer
 
+### get_attention_mask(encoder_lengths: LongTensor, decoder_lengths: LongTensor)
+  - **셀프 어텐션 계층에 적용할 인과 마스크를 반환합니다.**
+
+### interpret_output(out: Dict[str, Tensor], reduction: str = 'none', attention_prediction_horizon: int = 0) → Dict[str, Tensor]
+   - **모델의 출력을 해석합니다.**
+
+- **Parameters:**
+    - **out** – forward()에 의해 생성된 출력
+    - **reduction** – 배치에 대한 평균 없음을 위해 "none", 어텐션을 합산하기 위해 "sum", 인코딩 길이로 정규화하기 위해 "mean"
+    - **attention_prediction_horizon** – 어텐션에 사용할 예측 지평선
+
+- **Returns:**
+  plot_interpretation()으로 그릴 수 있는 해석
+
+### log_embeddings()
+  - **텐서보드에 임베딩을 기록합니다.**
+
+### log_interpretation(outputs)
+  - **텐서보드에 해석 지표를 기록합니다.**
+
+### on_epoch_end(outputs)
+  - **훈련 또는 검증의 에포크 종료시 실행됩니다.**
+
+### on_fit_end()
+  - **맞춤(fit)이 완전히 끝난 후 호출됩니다.**
+  - **DDP에서는 각 프로세스에서 호출됩니다.**
+
+### plot_interpretation(interpretation: Dict[str, Tensor]) → Dict[str, Figure]
+  - **모델을 해석하는 그림을 생성합니다.**
+
+    - Attention
+    - 변수 선택 가중치 / 중요도
+
+  - **Parameters:**
+    - interpretation – interpret_output()에서 얻은 값
+
+  - **Returns:**
+    - matplotlib 그림의 사전
+
+### plot_prediction(x: Dict[str, Tensor], out: Dict[str, Tensor], idx: int, plot_attention: bool = True, add_loss_to_title: bool = False, show_future_observed: bool = True, ax=None, **kwargs) → Figure
+실제 값과 예측 그리고 어텐션을 그립니다.
+
+  - **Parameters:**
+    - **x** (Dict[str, torch.Tensor]) – 네트워크 입력
+    - **out** (Dict[str, torch.Tensor]) – 네트워크 출력
+    - **idx** (int) – 샘플 인덱스
+    - **plot_attention** – 보조 축에 어텐션을 그릴지 여부
+    - **add_loss_to_title** – 제목에 손실을 추가할지 여부. 기본값은 False입니다.
+    - **show_future_observed** – 미래 실제 값을 표시할지 여부. 기본값은 True입니다.
+    - **ax** – 그림을 그릴 matplotlib 축
+
+  - **Returns:**
+    - matplotlib 그림
+
+  - **Return type:**
+    - plt.Figure
+
 
 # 프로젝트 타임테이블
 
