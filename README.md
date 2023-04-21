@@ -130,6 +130,7 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 |                             | `quantiles_kwargs` (Dict[str, Any], optional): to_quantiles(). Defaults to {}.                                   |                                                                                                                                            |
 |                             | **Returns**: log dictionary to be returned by training and validation steps                                      |                                                                                                                                            |
 |                             | **Return type**: Dict[str, Any]                                                                                  |                                                                                                                                            |
+#### expand_static_context
 
 | Method                                               | Parameter                                                                                                               | 설명                                                                                   |
 |------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
