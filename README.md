@@ -44,18 +44,6 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 | Economic Indicators | GDP, CPI, PPI, and other economic indicators for major economies | Various | Monthly/Quarterly |
 | Seasonality | Seasonal factors affecting shipping demand | - | Annual |
 
-# 프로젝트 타임테이블
-
-본 프로젝트는 4월 한달간 진행 하였으며, 이후 5월, 6월 추가 수정 작업이 예정되어 있습니다.
-
-| 단계 | 설명 | 예상 소요 시간 | 시작 날짜 | 완료 날짜 |
-|:---:|:---|:---:|:---:|:---:|
-| 1 | 데이터 수집 및 전처리 | 1주 | 2023-04-03 | 2023-04-10 |
-| 2 | 모델 학습 및 하이퍼파라미터 튜닝 | 1주 | 2023-04-10 | 2023-04-17 |
-| 3 | 모델 평가 및 결과 분석 | 1주 | 2023-04-11 | 2023-04-21 |
-| 4 | 문서 작성 및 발표 자료 준비 | 1주 | 2023-04-21 | 2023-04-27 |
-| 5 | 최종 발표 | - | 2023-04-28 | 2023-04-28 |
-
 # 사용 모듈 설명
   - TemporalFusionTransformer 클래스는 PyTorch Forecasting 라이브러리에서 시계열 예측을 위한 Temporal Fusion Transformer (TFT) 모델을 구현한 것입니다.
   TFT는 다양한 특성을 갖는 시계열 데이터를 처리하고 예측하는 데 효과적인 딥러닝 아키텍처입니다.
@@ -113,6 +101,35 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 | logging_metrics                 | None        | 모델 학습 중 로깅할 메트릭을 정의하는 ModuleList            |
 | **kwargs                        | -           | 추가 인자를 전달하기 위한 키워드 인수                        |
 
+### Methods
+
+| Method                             | 설명                                                                                   |
+|------------------------------------|----------------------------------------------------------------------------------------|
+| `create_log(x, y, out, batch_idx, **kwargs)` | Training 및 validation 단계에서 사용되는 로그를 생성합니다.                          |
+| `expand_static_context(context, timesteps)` | 정적 컨텍스트에 시간 차원을 추가합니다.                                               |
+| `forward(x)`                       | input dimensions: n_samples x time x variables                                       |
+| `from_dataset(dataset[, ...])`     | 데이터셋에서 모델을 생성합니다.                                                       |
+| `get_attention_mask(encoder_lengths, ...)` | self-attention layer에 적용할 인과적 마스크를 반환합니다.                            |
+| `interpret_output(out[, reduction, ...])` | 모델의 출력을 해석합니다.                                                             |
+| `log_embeddings()`                 | 임베딩을 텐서보드에 기록합니다.                                                       |
+| `log_interpretation(outputs)`      | 해석 지표를 텐서보드에 기록합니다.                                                    |
+| `on_epoch_end(outputs)`            | 학습 또는 검증의 에포크 종료시 실행됩니다.                                            |
+| `on_fit_end()`                     | 마지막 fit에서 호출됩니다.                                                            |
+| `plot_interpretation(interpretation)` | 모델을 해석하는 그림을 생성합니다.                                                    |
+| `plot_prediction(x, out, idx[, ...])` | 실제값과 예측 및 attention을 그래프로 표시합니다.                                     |
+
+
+# 프로젝트 타임테이블
+
+본 프로젝트는 4월 한달간 진행 하였으며, 이후 5월, 6월 추가 수정 작업이 예정되어 있습니다.
+
+| 단계 | 설명 | 예상 소요 시간 | 시작 날짜 | 완료 날짜 |
+|:---:|:---|:---:|:---:|:---:|
+| 1 | 데이터 수집 및 전처리 | 1주 | 2023-04-03 | 2023-04-10 |
+| 2 | 모델 학습 및 하이퍼파라미터 튜닝 | 1주 | 2023-04-10 | 2023-04-17 |
+| 3 | 모델 평가 및 결과 분석 | 1주 | 2023-04-11 | 2023-04-21 |
+| 4 | 문서 작성 및 발표 자료 준비 | 1주 | 2023-04-21 | 2023-04-27 |
+| 5 | 최종 발표 | - | 2023-04-28 | 2023-04-28 |
 
 ## 주요 이벤트 및 마일스톤
 
