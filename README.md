@@ -66,6 +66,7 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 ### TemporalFusionTransformer
   - TemporalFusionTransformer 클래스는 PyTorch Forecasting 라이브러리에서 시계열 예측을 위한 Temporal Fusion Transformer (TFT) 모델을 구현한 것입니다.
   TFT는 다양한 특성을 갖는 시계열 데이터를 처리하고 예측하는 데 효과적인 딥러닝 아키텍처입니다.
+###  
 | 매개변수                         | 기본값        | 설명                                                         |
 |--------------------------------|-------------|------------------------------------------------------------|
 | hidden_size                     | 16          | LSTM과 Fully Connected 레이어의 hidden size                 |
