@@ -105,26 +105,26 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
   - **훈련 및 검증 단계에서 사용되는 로그를 생성합니다.**
 
   - **Parameters:**
-    - x (Dict[str, torch.Tensor]) - 데이터 로더에 의해 네트워크로 전달된 x
-    - y (Tuple[torch.Tensor, torch.Tensor]) - 데이터 로더에 의해 손실 함수로 전달된 y
-    - out (Dict[str, torch.Tensor]) - 네트워크의 출력
-    - batch_idx (int) - 배치 번호
-    - prediction_kwargs (Dict[str, Any], optional) - to_prediction()에 전달할 인수입니다. 기본값은 {}입니다.
-    - quantiles_kwargs (Dict[str, Any], optional) - to_quantiles()에 전달할 인수입니다. 기본값은 {}입니다.
+    - **x** (Dict[str, torch.Tensor]) - 데이터 로더에 의해 네트워크로 전달된 x
+    - **y** (Tuple[torch.Tensor, torch.Tensor]) - 데이터 로더에 의해 손실 함수로 전달된 y
+    - **out** (Dict[str, torch.Tensor]) - 네트워크의 출력
+    - **batch_idx** (int) - 배치 번호
+    - **prediction_kwargs** (Dict[str, Any], optional) - to_prediction()에 전달할 인수입니다. 기본값은 {}입니다.
+    - **quantiles_kwargs** (Dict[str, Any], optional) - to_quantiles()에 전달할 인수입니다. 기본값은 {}입니다.
 
     - **Returns:**
-<!-- 훈련 및 검증 단계에서 반환되는 로그 사전 -->
+      - 훈련 및 검증 단계에서 반환되는 로그 사전
 
-Return type:
-Dict[str, Any]
+    - **Return type:**
+        - Dict[str, Any]
 
-expand_static_context(context, timesteps)[source]
-정적 컨텍스트에 시간 차원을 추가합니다.
+### expand_static_context(context, timesteps)[source]
+  - **정적 컨텍스트에 시간 차원을 추가합니다.**
 
-forward(x: Dict[str, Tensor]) → Dict[str, Tensor][source]
-입력 차원: n_samples x time x variables
+### forward(x: Dict[str, Tensor]) → Dict[str, Tensor][source]
+  - **입력 차원: n_samples x time x variables**
 
-classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)[source]
+### classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)[source]
 데이터셋에서 모델을 생성합니다.
 
 Parameters:
