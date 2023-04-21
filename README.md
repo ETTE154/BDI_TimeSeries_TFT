@@ -131,6 +131,16 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 |                             | **Returns**: log dictionary to be returned by training and validation steps                                      |                                                                                                                                            |
 |                             | **Return type**: Dict[str, Any]                                                                                  |                                                                                                                                            |
 
+| Method                                               | Parameter                                                                                                               | 설명                                                                                   |
+|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| `expand_static_context(context, timesteps)`          | `context`: static context                                                                                               | 정적 컨텍스트에 시간 차원을 추가합니다.                                               |
+|                                                      | `timesteps`: time dimension                                                                                             |                                                                                        |
+| `forward(x)`                                         | `x` (Dict[str, Tensor]): input dimensions: n_samples x time x variables                                                 |                                                                                        |
+| `from_dataset(dataset, allowed_encoder_known_variable_names=None, **kwargs)` | `dataset`: timeseries dataset                                                                                           | 데이터셋에서 모델을 생성합니다.                                                       |
+|                                                      | `allowed_encoder_known_variable_names` (List[str] \| None, optional): List of known variables allowed in encoder, defaults to all |                                                                                        |
+|                                                      | `**kwargs`: additional arguments such as hyperparameters for model (see `__init__()`)                                   |                                                                                        |
+|                                                      | **Returns**: TemporalFusionTransformer                                                                                   |                                                                                        |
+
 # 프로젝트 타임테이블
 
 본 프로젝트는 4월 한달간 진행 하였으며, 이후 5월, 6월 추가 수정 작업이 예정되어 있습니다.
