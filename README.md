@@ -116,7 +116,7 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
       - 훈련 및 검증 단계에서 반환되는 로그 사전
 
     ### **Return type:**
-        - Dict[str, Any]
+      - Dict[str, Any]
 
 ### expand_static_context(context, timesteps)
   - **정적 컨텍스트에 시간 차원을 추가합니다.**
@@ -126,13 +126,13 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 
 ### classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)
 
-    - **Parameters:**
-      - **dataset** – 시계열 데이터셋
-      - **allowed_encoder_known_variable_names** – 인코더에서 허용되는 알려진 변수 목록, 기본값은 모두 허용됩니다.
-      - **kwargs – 모델의 하이퍼파라미터와 같은 추가 인수(__init__() 참조)
+- **Parameters:**
+    - **dataset** – 시계열 데이터셋
+    - **allowed_encoder_known_variable_names** – 인코더에서 허용되는 알려진 변수 목록, 기본값은 모두 허용됩니다.
+    - **kwargs** – 모델의 하이퍼파라미터와 같은 추가 인수(__init__() 참조)
 
-Returns:
-TemporalFusionTransformer
+    - **Returns:** 
+       TemporalFusionTransformer
 
 
 # 프로젝트 타임테이블
