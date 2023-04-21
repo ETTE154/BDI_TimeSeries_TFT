@@ -33,7 +33,7 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 ## Dataset
 
 | Feature | Description | Unit | Frequency |
-| ------- | ----------- | ---- | --------- |
+| :-------: | :-----------: | :----: | :---------: |
 | BDI | Baltic Dry Index | Points | Daily |
 | Freight Rates | Freight rates for major shipping routes | USD/ton | Daily |
 | Global Iron Ore Prices | Iron ore prices in the global market | USD/ton | Daily |
