@@ -101,51 +101,40 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 | logging_metrics                 | None        | 모델 학습 중 로깅할 메트릭을 정의하는 ModuleList            |
 | **kwargs                        | -           | 추가 인자를 전달하기 위한 키워드 인수                        |
 
-### Methods
+### create_log(x, y, out, batch_idx, **kwargs)[source]
+  - **훈련 및 검증 단계에서 사용되는 로그를 생성합니다.**
 
-| Method                             | 설명                                                                                   |
-|------------------------------------|----------------------------------------------------------------------------------------|
-| `create_log(x, y, out, batch_idx, **kwargs)` | Training 및 validation 단계에서 사용되는 로그를 생성합니다.                          |
-| `expand_static_context(context, timesteps)` | 정적 컨텍스트에 시간 차원을 추가합니다.                                               |
-| `forward(x)`                       | input dimensions: n_samples x time x variables                                       |
-| `from_dataset(dataset[, ...])`     | 데이터셋에서 모델을 생성합니다.                                                       |
-| `get_attention_mask(encoder_lengths, ...)` | self-attention layer에 적용할 인과적 마스크를 반환합니다.                            |
-| `interpret_output(out[, reduction, ...])` | 모델의 출력을 해석합니다.                                                             |
-| `log_embeddings()`                 | 임베딩을 텐서보드에 기록합니다.                                                       |
-| `log_interpretation(outputs)`      | 해석 지표를 텐서보드에 기록합니다.                                                    |
-| `on_epoch_end(outputs)`            | 학습 또는 검증의 에포크 종료시 실행됩니다.                                            |
-| `on_fit_end()`                     | 마지막 fit에서 호출됩니다.                                                            |
-| `plot_interpretation(interpretation)` | 모델을 해석하는 그림을 생성합니다.                                                    |
-| `plot_prediction(x, out, idx[, ...])` | 실제값과 예측 및 attention을 그래프로 표시합니다.                                     |
+  - **Parameters:**
+    - x (Dict[str, torch.Tensor]) - 데이터 로더에 의해 네트워크로 전달된 x
+    - y (Tuple[torch.Tensor, torch.Tensor]) - 데이터 로더에 의해 손실 함수로 전달된 y
+    - out (Dict[str, torch.Tensor]) - 네트워크의 출력
+    - batch_idx (int) - 배치 번호
+    - prediction_kwargs (Dict[str, Any], optional) - to_prediction()에 전달할 인수입니다. 기본값은 {}입니다.
+    - quantiles_kwargs (Dict[str, Any], optional) - to_quantiles()에 전달할 인수입니다. 기본값은 {}입니다.
 
-#### creat_log
+    - **Returns:**
+<!-- 훈련 및 검증 단계에서 반환되는 로그 사전 -->
 
-| Method                      | Parameter                                                                                                        | 설명                                                                                                                                       |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| `create_log(x, y, out, batch_idx, **kwargs)` | `x` (Dict[str, torch.Tensor]): x as passed to the network by the dataloader                                       | Training 및 validation 단계에서 사용되는 로그를 생성합니다.                                                                                |
-|                             | `y` (Tuple[torch.Tensor, torch.Tensor]): y as passed to the loss function by the dataloader                      |                                                                                                                                            |
-|                             | `out` (Dict[str, torch.Tensor]): output of the network                                                           |                                                                                                                                            |
-|                             | `batch_idx` (int): batch number                                                                                  |                                                                                                                                            |
-|                             | `prediction_kwargs` (Dict[str, Any], optional): arguments to pass to to_prediction(). Defaults to {}.             |                                                                                                                                            |
-|                             | `quantiles_kwargs` (Dict[str, Any], optional): to_quantiles(). Defaults to {}.                                   |                                                                                                                                            |
-|                             | **Returns**: log dictionary to be returned by training and validation steps                                      |                                                                                                                                            |
-|                             | **Return type**: Dict[str, Any]                                                                                  |                                                                                                                                            |
-#### expand_static_context
+Return type:
+Dict[str, Any]
 
-| Method                                               | Parameter                                                                                                               | 설명                                                                                   |
-|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| `expand_static_context(context, timesteps)`          | `context`: static context                                                                                               | 정적 컨텍스트에 시간 차원을 추가합니다.                                               |
-|                                                      | `timesteps`: time dimension                                                                                             |                                                                                        |
-| `forward(x)`                                         | `x` (Dict[str, Tensor]): input dimensions: n_samples x time x variables                                                 |                                                                                        |
-| `from_dataset(dataset, allowed_encoder_known_variable_names=None, **kwargs)` | `dataset`: timeseries dataset                                                                                           | 데이터셋에서 모델을 생성합니다.                                                       |
-|                                                      | `allowed_encoder_known_variable_names` (List[str] \| None, optional): List of known variables allowed in encoder, defaults to all |                                                                                        |
-|                                                      | `**kwargs`: additional arguments such as hyperparameters for model (see `__init__()`)                                   |                                                                                        |
-|                                                      | **Returns**: TemporalFusionTransformer                                                                                   |                                                                                        |
-| `get_attention_mask(encoder_lengths, decoder_lengths)` | `encoder_lengths` (LongTensor): Encoder lengths                                                                  | 자기주의(self-attention) 계층에 적용할 인과 마스크를 반환합니다. 이 메소드는 인코더 및 디코더 길이를 사용하여 자기주의 계층에 적용할 인과 마스크를 생성합니다.|
-|                             | `decoder_lengths` (LongTensor): Decoder lengths                                                                  |                                                                                                                                            |
-| `interpret_output(out, reduction, attention_prediction_horizon)` | `out` (Dict[str, Tensor]): output as produced by forward()                                                       | 모델의 출력을 해석합니다. 이 메소드는 forward()에서 생성된 출력, 배치 평균에 대한 옵션(reduction) 및 attention 예측 기간을 사용하여 모델의 출력을 해석합니다. 결과는 plot_interpretation()을 사용하여 그릴 수 있습니다. |
-|                             | `reduction` (str): "none" for no averaging over batches, "sum" for summing attentions, "mean" for normalizing by encode lengths |                                                                                                                                            |
-|                             | `attention_prediction_horizon` (int): which prediction horizon to use for attention                                                           |                                                                                                                                            |
+expand_static_context(context, timesteps)[source]
+정적 컨텍스트에 시간 차원을 추가합니다.
+
+forward(x: Dict[str, Tensor]) → Dict[str, Tensor][source]
+입력 차원: n_samples x time x variables
+
+classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)[source]
+데이터셋에서 모델을 생성합니다.
+
+Parameters:
+dataset – 시계열 데이터셋
+allowed_encoder_known_variable_names – 인코더에서 허용되는 알려진 변수 목록, 기본값은 모두 허용됩니다.
+**kwargs – 모델의 하이퍼파라미터와 같은 추가 인수(__init__() 참조)
+
+Returns:
+TemporalFusionTransformer
+
 
 # 프로젝트 타임테이블
 
