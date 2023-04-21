@@ -63,9 +63,29 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 
 ##  PyTorch Forecasting
 
-### TemporalFusionTransformer
-  - TemporalFusionTransformer 클래스는 PyTorch Forecasting 라이브러리에서 시계열 예측을 위한 Temporal Fusion Transformer (TFT) 모델을 구현한 것입니다.
-  TFT는 다양한 특성을 갖는 시계열 데이터를 처리하고 예측하는 데 효과적인 딥러닝 아키텍처입니다.
+### Temporal Fusion Transformer
+
+**Bases**: BaseModelWithCovariates
+
+Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스로, 시계열 예측을 위해 설계되었습니다. 이 클래스는 가능한 경우 `from_dataset()` 메서드를 사용하는 것이 좋습니다.
+
+이 구현은 "Temporal Fusion Transformers for Interpretable Multi-horizon Time Series Forecasting" 논문에 기반하며, 벤치마크에서 Amazon의 DeepAR보다 36-69% 우수한 성능을 보입니다.
+
+### Enhancements compared to the original implementation
+
+원래 구현에 비해 추가된 기능과 개선 사항은 다음과 같습니다 (기본 모델을 통해 추가된 기능 외에도 단조 제약 조건 등):
+
+1. 정적 변수가 연속일 수 있습니다.
+2. 여러 범주형 변수가 EmbeddingBag을 사용하여 요약될 수 있습니다.
+3. 샘플 별로 인코더와 디코더 길이가 다릅니다.
+4. 범주형 임베딩이 변수 선택 네트워크에 의해 변환되지 않습니다 (중복 작업이기 때문입니다).
+5. 변수 선택 네트워크의 변수 차원이 선형 보간을 통해 확장되어 매개변수 수를 줄입니다.
+6. 인코더와 디코더 사이에서 변수 선택 네트워크의 비선형 변수 처리가 공유될 수 있습니다 (기본적으로는 공유되지 않습니다).
+
+### Hyperparameter Tuning
+
+이 클래스의 하이퍼파라미터는 `optimize_hyperparameters()` 메서드를 사용하여 조정할 수 있습니다. 이를 통해 모델 성능을 최적화할 수 있습니다.
+
 ###  
 | 매개변수                         | 기본값        | 설명                                                         |
 |--------------------------------|-------------|------------------------------------------------------------|
