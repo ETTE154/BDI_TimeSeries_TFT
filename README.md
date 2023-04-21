@@ -101,7 +101,7 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 | logging_metrics                 | None        | 모델 학습 중 로깅할 메트릭을 정의하는 ModuleList            |
 | **kwargs                        | -           | 추가 인자를 전달하기 위한 키워드 인수                        |
 
-### create_log(x, y, out, batch_idx, **kwargs)[source]
+### create_log(x, y, out, batch_idx, **kwargs)
   - **훈련 및 검증 단계에서 사용되는 로그를 생성합니다.**
 
   - **Parameters:**
@@ -112,25 +112,24 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
     - **prediction_kwargs** (Dict[str, Any], optional) - to_prediction()에 전달할 인수입니다. 기본값은 {}입니다.
     - **quantiles_kwargs** (Dict[str, Any], optional) - to_quantiles()에 전달할 인수입니다. 기본값은 {}입니다.
 
-    - **Returns:**
+    ### **Returns:**
       - 훈련 및 검증 단계에서 반환되는 로그 사전
 
-    - **Return type:**
+    ### **Return type:**
         - Dict[str, Any]
 
-### expand_static_context(context, timesteps)[source]
+### expand_static_context(context, timesteps)
   - **정적 컨텍스트에 시간 차원을 추가합니다.**
 
-### forward(x: Dict[str, Tensor]) → Dict[str, Tensor][source]
+### forward(x: Dict[str, Tensor]) → Dict[str, Tensor]
   - **입력 차원: n_samples x time x variables**
 
-### classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)[source]
-데이터셋에서 모델을 생성합니다.
+### classmethod from_dataset(dataset: TimeSeriesDataSet, allowed_encoder_known_variable_names: List[str] | None = None, **kwargs)
 
-Parameters:
-dataset – 시계열 데이터셋
-allowed_encoder_known_variable_names – 인코더에서 허용되는 알려진 변수 목록, 기본값은 모두 허용됩니다.
-**kwargs – 모델의 하이퍼파라미터와 같은 추가 인수(__init__() 참조)
+    ### **Parameters:**
+      - **dataset** – 시계열 데이터셋
+      - **allowed_encoder_known_variable_names** – 인코더에서 허용되는 알려진 변수 목록, 기본값은 모두 허용됩니다.
+      - **kwargs – 모델의 하이퍼파라미터와 같은 추가 인수(__init__() 참조)
 
 Returns:
 TemporalFusionTransformer
