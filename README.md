@@ -56,6 +56,43 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 | 4 | 문서 작성 및 발표 자료 준비 | 1주 | 2023-04-21 | 2023-04-27 |
 | 5 | 최종 발표 | - | 2023-04-28 | 2023-04-28 |
 
+# 사용 모듈 설명
+  - TemporalFusionTransformer 클래스는 PyTorch Forecasting 라이브러리에서 시계열 예측을 위한 Temporal Fusion Transformer (TFT) 모델을 구현한 것입니다.
+  TFT는 다양한 특성을 갖는 시계열 데이터를 처리하고 예측하는 데 효과적인 딥러닝 아키텍처입니다.
+
+
+##  PyTorch Forecasting
+
+### TemporalFusionTransformer
+  - TemporalFusionTransformer 클래스는 PyTorch Forecasting 라이브러리에서 시계열 예측을 위한 Temporal Fusion Transformer (TFT) 모델을 구현한 것입니다.
+  TFT는 다양한 특성을 갖는 시계열 데이터를 처리하고 예측하는 데 효과적인 딥러닝 아키텍처입니다.
+| 매개변수                         | 기본값        | 설명                                                         |
+|--------------------------------|-------------|------------------------------------------------------------|
+| hidden_size                     | 16          | LSTM과 Fully Connected 레이어의 hidden size                 |
+| lstm_layers                     | 1           | LSTM 레이어의 개수                                          |
+| dropout                         | 0.1         | 드롭아웃 비율                                                |
+| output_size                     | 7           | 출력 크기 또는 각 출력 특성에 대한 출력 크기 목록            |
+| loss                            | None        | 손실 함수                                                   |
+| attention_head_size             | 4           | Multi-head Attention 레이어의 헤드 크기                      |
+| max_encoder_length              | 10          | 인코더의 최대 시퀀스 길이                                    |
+| static_categoricals, ...        | []          | 입력 데이터의 다양한 유형의 특성들을 정의하는 리스트들      |
+| categorical_groups              | {}          | 범주형 그룹화를 정의하는 딕셔너리                           |
+| hidden_continuous_size          | 8           | 연속적인 변수의 hidden size                                 |
+| hidden_continuous_sizes         | {}          | 각 연속적인 변수에 대한 hidden size를 정의하는 딕셔너리    |
+| embedding_sizes                 | {}          | 각 범주형 변수에 대한 임베딩 크기를 정의하는 딕셔너리      |
+| embedding_paddings              | []          | 패딩이 필요한 범주형 변수의 목록                            |
+| embedding_labels                | {}          | 범주형 변수의 레이블을 정의하는 딕셔너리                   |
+| learning_rate                   | 0.001       | 학습률                                                     |
+| log_interval, log_val_interval  | -1, None    | 로그 간격 및 검증 로그 간격                                 |
+| log_gradient_flow               | False       | 그래디언트 흐름을 기록할지 여부                             |
+| reduce_on_plateau_patience      | 1000        | 학습률을 줄이기 위한 ReduceLROnPlateau 스케줄러의 patience |
+| monotone_constaints             | {}          | 예측이 단조롭게 증가하거나 감소하도록 강제하는 제약 조건    |
+| share_single_variable_networks  | False       | 모든 변수에 대해 동일한 가중치를 공유하는 네트워크 사용 여부|
+| causal_attention                | True        | 인코더-디코더 어텐션에 인과 관계를 갖도록 할지 여부          |
+| logging_metrics                 | None        | 모델 학습 중 로깅할 메트릭을 정의하는 ModuleList            |
+| **kwargs                        | -           | 추가 인자를 전달하기 위한 키워드 인수                        |
+
+
 ## 주요 이벤트 및 마일스톤
 
 - **데이터 수집 및 전처리 완료**: 2023-04-10
