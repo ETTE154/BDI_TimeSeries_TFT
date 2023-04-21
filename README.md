@@ -118,6 +118,18 @@ Temporal Fusion Transformer는 `BaseModelWithCovariates`를 상속한 클래스�
 | `plot_interpretation(interpretation)` | 모델을 해석하는 그림을 생성합니다.                                                    |
 | `plot_prediction(x, out, idx[, ...])` | 실제값과 예측 및 attention을 그래프로 표시합니다.                                     |
 
+#### creat_log
+
+| Method                      | Parameter                                                                                                        | 설명                                                                                                                                       |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `create_log(x, y, out, batch_idx, **kwargs)` | `x` (Dict[str, torch.Tensor]): x as passed to the network by the dataloader                                       | Training 및 validation 단계에서 사용되는 로그를 생성합니다.                                                                                |
+|                             | `y` (Tuple[torch.Tensor, torch.Tensor]): y as passed to the loss function by the dataloader                      |                                                                                                                                            |
+|                             | `out` (Dict[str, torch.Tensor]): output of the network                                                           |                                                                                                                                            |
+|                             | `batch_idx` (int): batch number                                                                                  |                                                                                                                                            |
+|                             | `prediction_kwargs` (Dict[str, Any], optional): arguments to pass to to_prediction(). Defaults to {}.             |                                                                                                                                            |
+|                             | `quantiles_kwargs` (Dict[str, Any], optional): to_quantiles(). Defaults to {}.                                   |                                                                                                                                            |
+|                             | **Returns**: log dictionary to be returned by training and validation steps                                      |                                                                                                                                            |
+|                             | **Return type**: Dict[str, Any]                                                                                  |                                                                                                                                            |
 
 # 프로젝트 타임테이블
 
