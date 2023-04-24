@@ -1,7 +1,7 @@
 # 결과 분석 방법
 
-### Attention 매커니즘
-  - **TFT (Temporal Fusion Transformer) 모델의 어텐션 메커니즘에서 사용되는 쿼리(Query), 키(Key), 밸류(Value)는 다음과 같이 연산됩니다.**어텐션 메커니즘은 주어진 입력 시퀀스에 대해 다른 위치의 정보를 가중치를 부여하여 정보를 종합하는 과정입니다. 쿼리(Query), 키(Key), 밸류(Value)는 이 과정에서 핵심적인 역할을 수행합니다.
+## Attention 매커니즘
+  - TFT (Temporal Fusion Transformer) 모델의 어텐션 메커니즘에서 사용되는 쿼리(Query), 키(Key), 밸류(Value)는 다음과 같이 연산됩니다.어텐션 메커니즘은 주어진 입력 시퀀스에 대해 다른 위치의 정보를 가중치를 부여하여 정보를 종합하는 과정입니다. 쿼리(Query), 키(Key), 밸류(Value)는 이 과정에서 핵심적인 역할을 수행합니다.
 
 쿼리(Query), 키(Key), 밸류(Value) 계산:
 
@@ -13,14 +13,14 @@ V = W_v * X
 
 여기서,
 
-**Q, K, V**는 각각 **쿼리(Query), 키(Key), 밸류(Value)** 행렬입니다.
-**W_q, W_k, W_v**는 각각 **쿼리(Query), 키(Key), 밸류(Value)**를 계산하기 위한 가중치 행렬입니다.
-**X**는 인코더 또는 디코더의 입력 행렬입니다.
+Q, K, V는 각각 **쿼리(Query), 키(Key), 밸류(Value)** 행렬입니다.
+W_q, W_k, W_v는 각각 **쿼리(Query), 키(Key), 밸류(Value)** 를 계산하기 위한 가중치 행렬입니다.
+X는 인코더 또는 디코더의 입력 행렬입니다.
 어텐션 가중치 계산:
 
 **2. 쿼리(Query)와 키(Key) 행렬의 내적을 통해 각 위치 간의 유사도를 계산합니다. 이후, 소프트맥스(softmax) 함수를 적용하여 어텐션 가중치를 계산합니다.**
 
-**Attention_weights = softmax(Q * K^T / sqrt(d_k))**
+Attention_weights = softmax(Q * K^T / sqrt(d_k))
 
 여기서,
 
@@ -30,13 +30,13 @@ sqrt는 제곱근을 의미합니다.
 어텐션 출력 계산:
 
 **3. 어텐션 가중치와 밸류(Value) 행렬의 곱을 통해 어텐션 출력을 계산합니다.**
-
-**Attention_output = Attention_weights * V**
+Attention_output = Attention_weights * V
 
 어텐션 출력은 다음 계층으로 전달되거나, 여러 개의 어텐션 헤드가 있는 경우 이를 결합하여 최종 출력을 생성합니다.
 이렇게 계산된 어텐션 메커니즘은 TFT 모델의 인코더와 디코더에서 입력 시퀀스의 정보를 종합하는 데 사용되어, 시계열 데이터의 다양한 패턴을 포착하고 예측 성능을 향상시킵니다.
 
-### plot_prediction 함수는 실제 값과 예측 그리고 어텐션을 시각화합니다.
+## plot_prediction
+  - plot_prediction 함수는 실제 값과 예측 그리고 어텐션을 시각화합니다.
 
 #### 매개변수:
   - **x** (Dict[str, torch.Tensor]): 네트워크 입력
@@ -67,8 +67,7 @@ sqrt는 제곱근을 의미합니다.
   
 ### Variables importance
 #### Variable Selection Network 구조
-
-Temporal Fusion Transformer (TFT) 모델의 Variable Selection Network는 입력 변수의 가변적인 중요도를 자동으로 학습하는 구조입니다. 이 네트워크는 각 입력 변수에 대해 가중치를 할당하고, 이 가중치를 이용하여 예측에 얼마나 영향력 있는지를 결정합니다. 이를 통해 모델은 불필요한 변수를 걸러내고, 관련성이 높은 변수에 집중할 수 있습니다.
+  - Temporal Fusion Transformer (TFT) 모델의 Variable Selection Network는 입력 변수의 가변적인 중요도를 자동으로 학습하는 구조입니다. 이 네트워크는 각 입력 변수에 대해 가중치를 할당하고, 이 가중치를 이용하여 예측에 얼마나 영향력 있는지를 결정합니다. 이를 통해 모델은 불필요한 변수를 걸러내고, 관련성이 높은 변수에 집중할 수 있습니다.
 
 Variable Selection Network는 크게 두 가지 부분으로 구성됩니다.
 
@@ -79,7 +78,7 @@ Variable Selection Network는 크게 두 가지 부분으로 구성됩니다.
 Variable Selection Network는 이러한 구성요소를 사용하여 각 입력 변수의 중요도를 자동으로 학습합니다. 이 과정을 통해 TFT 모델은 다양한 입력 변수와 시간에 따라 변하는 중요도를 효과적으로 처리하며, 예측 성능을 높이는 데 도움이 됩니다.
 
 #### best_tft.plot_interpretation(interpretation)
-best_tft.plot_interpretation(interpretation) 함수는 Temporal Fusion Transformer (TFT) 모델의 해석 결과를 시각화합니다. 이 결과는 주로 다음 네 가지 범주로 나눌 수 있습니다.
+  - best_tft.plot_interpretation(interpretation) 함수는 Temporal Fusion Transformer (TFT) 모델의 해석 결과를 시각화합니다. 이 결과는 주로 다음 네 가지 범주로 나눌 수 있습니다.
 
   1. **Attention**: 이 그래프는 모델의 어텐션 메커니즘에 대한 정보를 보여줍니다. 어텐션 메커니즘은 인코더와 디코더 사이의 정보 흐름을 조절하며, 시계열 데이터의 특정 시점에 집중하여 예측에 도움이 되는 패턴을 찾습니다. 이 그래프에서는 각 시점의 어텐션 가중치가 어떻게 분포하는지 확인할 수 있습니다.
 
