@@ -33,16 +33,18 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 ## Dataset
 
 | Feature | Description | Unit | Frequency |
-| :-------: | :-----------: | :----: | :---------: |
-| BDI | Baltic Dry Index | Points | Daily |
-| SSEC | Shanghai Stock Exchange Composite | Points | Daily |
-| Nasdaq | National Association of Securities Dealers Automated Quotations | Points | Daily |
-| NOSB | Manufacturers' New Orders: Ships and Boats | Millions of Dollars | Monthly |
-| CRB | Commodity Research Bureau Index | Points | Daily |
-| Fed | United States Fed Funds Rate | Points | Monthly |
-| OECD GDP growth| OECD GDP growth | Points | for years |
-| Economic Indicators | GDP, CPI, PPI, and other economic indicators for major economies | Various | Monthly/Quarterly |
+| :-----: | :---------: | :--: | :-------: |
+| BDI     | Baltic Dry Index | Points | Daily |
+| SSEC    | Shanghai Stock Exchange Composite | Points | Daily |
+| Nasdaq  | National Association of Securities Dealers Automated Quotations | Points | Daily |
+| NOSB    | Manufacturers' New Orders: Ships and Boats | Millions of Dollars | Monthly |
+| CRB     | Commodity Research Bureau Index | Points | Daily |
+| Fed     | United States Fed Funds Rate | Percent | Monthly |
+| OECD GDP growth | OECD GDP growth rate | Percent | Annual |
+| EPU     | Economic Policy Uncertainty (USA, China) | Points | Monthly |
+| Special Events | Subprime Mortgage, Covid-19, etc. | - | Occasional |
 | Seasonality | Seasonal factors affecting shipping demand | - | Annual |
+
 
 # 프로젝트 타임테이블
 
