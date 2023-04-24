@@ -35,12 +35,12 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 | Feature | Description | Unit | Frequency |
 | :-------: | :-----------: | :----: | :---------: |
 | BDI | Baltic Dry Index | Points | Daily |
-| Freight Rates | Freight rates for major shipping routes | USD/ton | Daily |
-| Global Iron Ore Prices | Iron ore prices in the global market | USD/ton | Daily |
-| Crude Oil Prices | Crude oil prices in the global market | USD/barrel | Daily |
-| Vessel Supply | Number of available vessels for shipping | Count | Daily |
-| Port Congestion | Number of congested ports worldwide | Count | Daily |
-| Shipbuilding Orders | Number of new shipbuilding orders placed | Count | Monthly |
+| SSEC | Shanghai Stock Exchange Composite | Points | Daily |
+| Nasdaq | National Association of Securities Dealers Automated Quotations | Points | Daily |
+| NOSB | Manufacturers' New Orders: Ships and Boats | Millions of Dollars | Monthly |
+| CRB | Commodity Research Bureau Index | Points | Daily |
+| Fed | United States Fed Funds Rate | Points | Monthly |
+| OECD GDP growth| OECD GDP growth | Points | for years |
 | Economic Indicators | GDP, CPI, PPI, and other economic indicators for major economies | Various | Monthly/Quarterly |
 | Seasonality | Seasonal factors affecting shipping demand | - | Annual |
 
