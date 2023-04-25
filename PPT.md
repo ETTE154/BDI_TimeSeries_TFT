@@ -28,7 +28,7 @@
 | Seasonality | Seasonal factors affecting shipping demand | - | Annual |
 
 ## Variable Selection Network 구조
-  - Temporal Fusion Transformer (TFT) 모델의 Variable Selection Network는 입력 변수의 가변적인 중요도를 자동으로 학습하는 구조입니다. 이 네트워크는 각 입력 변수에 대해 가중치를 할당하고, 이 가중치를 이용하여 예측에 얼마나 영향력 있는지를 결정합니다. 이를 통해 모델은 불필요한 변수를 걸러내고, 관련성이 높은 변수에 집중할 수 있습니다.
+  - TFT 모델의 주요 강점 중 하나는 변수 선택 네트워크와 인코더-디코더 아키텍처 덕분에 각 변수의 중요도를 해석할 수 있다는 점입니다. 이를 통해 BDI를 예측하는데 어떤 변수가 가장 큰 영향을 미치는지 이해할 수 있습니다.
 
 ## 결과 분석
 ### 1. Attention
