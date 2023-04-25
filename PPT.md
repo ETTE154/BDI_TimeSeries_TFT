@@ -15,17 +15,18 @@
 
 ## Dataset
 
-| Feature | Description | Unit | Frequency |
-| :-----: | :---------: | :--: | :-------: |
-| BDI     | Baltic Dry Index | Points | Daily |
-| SSEC    | Shanghai Stock Exchange Composite | Points | Daily |
-| Nasdaq  | National Association of Securities Dealers Automated Quotations | Points | Daily |
-| NOSB    | Manufacturers' New Orders: Ships and Boats | Millions of Dollars | Monthly |
-| CRB     | Commodity Research Bureau Index | Points | Daily |
-| Fed     | United States Fed Funds Rate | Percent | Monthly |
-| OECD GDP growth | OECD GDP growth rate | Percent | Annual |
-| Special Events | Subprime Mortgage, Covid-19, etc. | - | Occasional |
-| Seasonality | Seasonal factors affecting shipping demand | - | Annual |
+| 이름 | 설명 | 단위 | 빈도 |
+| :---: | :---: | :---: | :---: |
+| BDI | 발틱 건화물 지수 | Points | Daily |
+| SSEC | 상하이증권거래소 종합지수 | Points | Daily |
+| Nasdaq | 나스닥 종합주가지수 | Points | Daily |
+| NOSB | 선박 및 보트 신규 주문: 제조업 | Millions of Dollars | Monthly |
+| CRB | 상품 연구국 지수 | Points | Daily |
+| Fed | 미국 연방 기금 금리 | Percent | Monthly |
+| OECD GDP 성장 | OECD GDP 성장률 | Percent | Annual |
+| 특별 이벤트 | 서브프라임 모기지, 코로나19 등 | - | Occasional |
+| 계절성 | 선박 수요에 영향을 미치는 계절 요인 | - | Annual |
+
 
 ## Variable Selection Network 구조
   - TFT 모델의 주요 강점 중 하나는 변수 선택 네트워크와 인코더-디코더 아키텍처 덕분에 각 변수의 중요도를 해석할 수 있다는 점입니다. 이를 통해 BDI를 예측하는데 어떤 변수가 가장 큰 영향을 미치는지 이해할 수 있습니다.
