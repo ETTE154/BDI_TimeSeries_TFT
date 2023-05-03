@@ -67,5 +67,5 @@ TFT 모델의 주요 구성 요소는 다음과 같습니다:
 - **최종 발표**: 2023-04-28
 
 ## Reference 
-Module : https://pytorch-forecasting.readthedocs.io/en/stable/tutorials/stallion.html
-Paper : https://arxiv.org/abs/1912.09363
+  - Module : https://pytorch-forecasting.readthedocs.io/en/stable/tutorials/stallion.html
+  - Paper : https://arxiv.org/abs/1912.09363
